@@ -68,11 +68,6 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public Page<EthereumTransaction> searchByFullText(String text, Pageable pageable) {
-        List<String> fields = Arrays.stream(EthereumTransaction.class.getDeclaredFields())
-                .map(Field::getName)
-                .toList();
-
-
         try {
             Query query = new Query.Builder()
                     .multiMatch(QueryBuilders.multiMatch()
